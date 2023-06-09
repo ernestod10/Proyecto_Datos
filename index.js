@@ -1,4 +1,4 @@
-const usersRouter = require('./routes/users');
+const martRouter = require('./routes/mart');
 
 const express = require('express');
 const { Pool } = require('pg');
@@ -18,7 +18,7 @@ const pool = new Pool({
   app.get('/', (req, res) => {
     res.send('Hello, World!');
   });
-  app.use('/users', usersRouter);
+  app.use('/mart', martRouter);
 
   app.listen(port, () => {
     console.log(`Server running on port ${port}`);
