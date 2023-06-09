@@ -1,3 +1,4 @@
+require('dotenv').config();
 
 const martRouter = require('./routes/mart');
 
@@ -5,16 +6,18 @@ const express = require('express');
 const { Pool } = require('pg');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+
 
 // conexion a postgres
 const pool = new Pool({
-    user: 'your_username',
-    host: 'localhost',
-    database: 'your_database',
-    password: 'your_password',
-    port: 5432 
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_DATABASE,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT
   });
+  
   app.use('/mart', martRouter);
   app.get('/', (req, res) => {
     res.send('Hello, World!');
