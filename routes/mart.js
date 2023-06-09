@@ -1,3 +1,5 @@
+const express = require('express');
+const router = express.Router();
 // Get 
 router.get('/', (req, res) => {
     pool.query('SELECT * FROM ', (err, result) => {
