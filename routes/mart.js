@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 // Get 
+module.exports = (pool) => {
 router.get('/', (req, res) => {
     pool.query('SELECT * FROM ', (err, result) => {
       if (err) {
@@ -11,4 +12,5 @@ router.get('/', (req, res) => {
       }
     });
   });
-module.exports = router;
+return router;
+};
