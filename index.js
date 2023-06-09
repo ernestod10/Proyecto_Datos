@@ -14,11 +14,10 @@ const pool = new Pool({
     password: 'your_password',
     port: 5432 
   });
-
+  app.use('/mart', martRouter);
   app.get('/', (req, res) => {
     res.send('Hello, World!');
   });
-  app.use('/mart', martRouter);
 
   app.listen(port, () => {
     console.log(`Server running on port ${port}`);
