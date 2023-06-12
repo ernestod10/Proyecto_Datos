@@ -35,7 +35,7 @@ module.exports = (pool) => {
           res.status(500).json({ error: 'Internal server error' });
         } else {
           const metodoPagos = metodoResult.rows.map((row) => ({
-            id_metodo: row.id_metodo,
+            id_metodo: row.id_metodo_pago,
             nombre: row.nombre,
             fecha_carga: row.fecha_carga,
           }));
