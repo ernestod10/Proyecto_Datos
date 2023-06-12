@@ -16,7 +16,7 @@ module.exports = (pool) => {
   latitud: sucursalResult.rows[0].latitud,
   fecha_carga: sucursalResult.rows[0].fecha_carga,
   };
-  pool.query('SELECT * FROM modelo_vehiculos', (err, modeloResult) => {
+  pool.query('SELECT * FROM modelo_vehiculo', (err, modeloResult) => {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Internal server error' });
@@ -29,7 +29,7 @@ module.exports = (pool) => {
         fecha_carga: row.fecha_carga,
       }));
 
-      pool.query('SELECT * FROM metodo_pagos', (err, metodoResult) => {
+      pool.query('SELECT * FROM metodo_pago', (err, metodoResult) => {
         if (err) {
           console.error(err);
           res.status(500).json({ error: 'Internal server error' });
@@ -40,7 +40,7 @@ module.exports = (pool) => {
             fecha_carga: row.fecha_carga,
           }));
 
-          pool.query('SELECT * FROM estadisticas_sucursal', (err, estadisticasResult) => {
+          pool.query('SELECT * FROM tabla_hechos_alquiler', (err, estadisticasResult) => {
             if (err) {
               console.error(err);
               res.status(500).json({ error: 'Internal server error' });
@@ -52,32 +52,32 @@ module.exports = (pool) => {
                   id_dia: row.id_dia,
                   id_hora: row.id_hora,
                 },
-                porc_Satisfaccion_Cliente: row.porc_Satisfaccion_Cliente,
+                porc_satisfaccion_cliente: row.porcentaje_satisfaccion_cliente,
                 id_metodo_pago: row.id_metodo_pago,
-                posicion_top_metodo_pago_utilizado: row.posicion_top_metodo_pago_utilizado,
+                posicion_top_metodo_pago_utilizado: row.top_metodo_pago_utilizado,
                 metodo_pago_veces_utilizado: row.metodo_pago_veces_utilizado,
                 porcentaje_utilizacion_metodo_pago: row.porcentaje_utilizacion_metodo_pago,
                 id_modelo_vehiculo: row.id_modelo_vehiculo,
-                posicion_top_modelo_vehiculo_alquilado: row.posicion_top_modelo_vehiculo_alquilado,
-                modelo_veces_alquilado: row.modelo_veces_alquilado,
-                modelo_porcentaje_alquilado: row.modelo_porcentaje_alquilado,
+                posicion_top_modelo_vehiculo_alquilado: row.top_modelo_vehiculo_alquilado,
+                modelo_veces_alquilado: row.veces_alquilado,
+                modelo_porcentaje_alquilado: row.porcenjate_alquilado_modelo,
                 ingresos: row.ingresos,
                 egresos: row.egresos,
-                porc_ingresos: row.porc_ingresos,
-                porc_egresos: row.porc_egresos,
-                ganancia_neta: row.ganancia_neta,
-                porc_vehiculos_disponibles: row.porc_vehiculos_disponibles,
-                duracion_promedio_alquiler: row.duracion_promedio_alquiler,
+                porc_ingresos: row.porcentaje_ingresos,
+                porc_egresos: row.porcentaje_egresos,
+                ganancia_neta: row.ganancia,
+                porc_vehiculos_disponibles: row.porcentaje_vehiculos_disponibles,
+                duracion_promedio_alquiler: row.duracion_alquiler,
                 total_alquileres: row.total_alquileres,
-                porc_vehiculos_utilizados: row.porc_vehiculos_utilizados,
+                porc_vehiculos_utilizados: row.porcentaje_vehiculos_alquilados,
               }));
 
-              const jsonData = {
-                sucursal,
-                modelo_Vehiculos: modeloVehiculos,
-                metodo_Pagos: metodoPagos,
-                estadisticas_sucursal: estadisticasSucursal,
-              };
+        const jsonData = {
+          sucursal: sucursal,
+          modelo_Vehiculos: modeloVehiculos,
+          metodo_Pagos: metodoPagos,
+          estadisticas_sucursal: estadisticasSucursal
+        };
 
               res.json(jsonData);
             }
