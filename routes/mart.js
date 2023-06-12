@@ -47,10 +47,10 @@ module.exports = (pool) => {
             } else {
               const estadisticasSucursal = estadisticasResult.rows.map((row) => ({
                 tiempo: {
-                  id_anio: row.id_anio,
-                  id_mes: row.id_mes,
-                  id_dia: row.id_dia,
-                  id_hora: row.id_hora,
+                  id_anio: row.id_tiempo, //HAY QUE CAMBIAR ESTO
+                  id_mes: row.id_tiempo,
+                  id_dia: row.id_tiempo,
+                  id_hora: row.id_tiempo,
                 },
                 porc_Satisfaccion_Cliente: row.porcentaje_satisfaccion_cliente,
                 id_metodo_pago: row.id_metodo_pago,
