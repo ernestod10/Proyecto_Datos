@@ -52,7 +52,7 @@ module.exports = (pool) => {
                   id_dia: row.id_dia,
                   id_hora: row.id_hora,
                 },
-                porc_satisfaccion_cliente: row.porcentaje_satisfaccion_cliente,
+                porc_Satisfaccion_Cliente: row.porcentaje_satisfaccion_cliente,
                 id_metodo_pago: row.id_metodo_pago,
                 posicion_top_metodo_pago_utilizado: row.top_metodo_pago_utilizado,
                 metodo_pago_veces_utilizado: row.metodo_pago_veces_utilizado,
