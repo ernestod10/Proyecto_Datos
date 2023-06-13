@@ -43,7 +43,7 @@ module.exports = (pool) => {
           pool.query('SELECT * FROM tabla_hechos_alquiler', (err, estadisticasResult) => {
             if (err) {
               console.error(err);
-              res.status(500).json({ error: 'Internal server error' });
+              res.status(500).json({ error: 'En mantenimiento, intenta mas tarde' });
             } else {
               const estadisticasSucursal = estadisticasResult.rows.map((row) => ({
                 tiempo: {
