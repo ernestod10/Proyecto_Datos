@@ -7,7 +7,7 @@ module.exports = (pool) => {
     
     try {
       // Assuming "TEST" is the table name and "test1" is the column name
-      const query = 'INSERT INTO "TEST" (test1) VALUES ($1)';
+      const query = 'INSERT INTO "test" (test1) VALUES ($1)';
       const values = [JSON.stringify(imageData)]; // Serialize the entire JSON data
       await pool.query(query, values);
 
