@@ -11,9 +11,9 @@ module.exports = (pool) => {
       const values = [JSON.stringify(imageData)]; // Serialize the entire JSON data
       //await pool.query(query, values);
 
-      res.status(200).send(values);
+      res.status(200).send(values.toString());
     
-      console.log(values) ;
+      console.log(values.toString()) ;
 
 
   });
