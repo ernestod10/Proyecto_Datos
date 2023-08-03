@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-// Add the express.json() middleware to parse incoming JSON data
+
 router.use(express.json());
 
+
+//Este mock lo que hace es q devuelve el body enviado y tambien lo pone en la consola
 module.exports = (pool) => {
   router.post('/', async (req, res) => {
     const imageData = req.body; 
