@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+
+// Add the express.json() middleware to parse incoming JSON data
 router.use(express.json());
 
 module.exports = (pool) => {
@@ -9,7 +11,7 @@ module.exports = (pool) => {
     const values = [JSON.stringify(imageData)]; // Serialize the entire JSON data
 
     //await pool.query(query, values);
-    res.status(200).send("data recieved correctly");
+    res.status(200).send(imageData);
     
     console.log(values);
   });
