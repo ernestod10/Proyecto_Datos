@@ -17,6 +17,13 @@ module.exports = (pool) => {
     
     console.log(values);
   });
+  router.post('/img/', async (req, res) => {
+    //await pool.query(query, values);
+    res.status(200).send('https://dummyimage.com/600x400/000/fff.jpg&text=aaa');
+    
+    console.log('img url sent');
+  });
 
   return router;
 };
+
