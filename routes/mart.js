@@ -19,7 +19,7 @@ module.exports = (pool) => {
   });
   router.post('/img/', async (req, res) => {
     //await pool.query(query, values);
-    res.status(200).json({ url: 'https://dummyimage.com/600x400/000/fff.jpg&text=aaa' });
+    res.status(200).json({ url: 'https://dummyimage.com/600x400/000/fff.jpg&text=test' });
     
     console.log('img url sent');
   });
