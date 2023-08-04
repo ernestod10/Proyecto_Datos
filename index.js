@@ -1,12 +1,13 @@
 const express = require('express');
 const { Pool } = require('pg');
 require('dotenv').config();
-
+const cors = require('cors');
 
 
 
 
 const app = express();
+app.use(cors());
 const port = process.env.PORT || 3000;
 const pool = new Pool({
     user: process.env.DB_USER,
