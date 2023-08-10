@@ -9,7 +9,7 @@ router.use(express.json());
 module.exports = (pool) => {
   router.post('/', async (req, res) => {
     const imageData = req.body; 
-    const query = 'INSERT INTO "test" (test1) VALUES ($1)';
+    const query = 'INSERT INTO "apitest" (test) VALUES ($1)';
     const values = [JSON.stringify(imageData)]; // Serialize the entire JSON data
     await pool.query(query, values);
     //await pool.query(query, values);
