@@ -122,22 +122,7 @@ router.get('/', async (req, res) => {
         menu
     } = updatedData;
 
-    const query = `UPDATE "apitest" SET 
-                  idEmpresa = $1,
-                  title = $2,
-                  type = $3,
-                  url = $4,
-                  message = $5,
-                  owner = $6,
-                  size = $7,
-                  created = $8,
-                  modified = $9,
-                  available = $10,
-                  error = $11,
-                  __typename = $12,
-                  menu = $13
-                  WHERE id = $14`;
-
+    const query = 'UPDATE "apitest" SET idEmpresa = $1,title = $2,type = $3,  url = $4, message = $5, owner = $6,   size = $7, created = $8, modified = $9,  available = $10,  error = $11,   __typename = $12,   menu = $13 WHERE id = $14;'
     const values = [
         idEmpresa,
         title,
