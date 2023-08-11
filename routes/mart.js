@@ -78,7 +78,7 @@ router.get('/', async (req, res) => {
           "string",
           "string",
           "date",
-          "string",
+          "boolean",
           "menu"
         ],
         "typeResum": [
@@ -86,7 +86,7 @@ router.get('/', async (req, res) => {
           "string",
           "string",
           "date",
-          "string",
+          "boolean",
           "menu"
         ],
         "menu": [
