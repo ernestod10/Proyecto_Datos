@@ -97,7 +97,7 @@ router.get('/', async (req, res) => {
       res.status(200).json(response);
   } catch (error) {
       console.error(error);
-      res.status(500).send('Internal Server Error');
+      res.status(500).json({ message: 'Internal server error' });
   }
 });
 
@@ -142,10 +142,12 @@ router.get('/', async (req, res) => {
 
     try {
         await pool.query(query, values);
-        res.status(200).send('Record updated successfully');
+        res.status(200).json({ message: 'Record updated successfully' });
+
     } catch (error) {
         console.error(error);
-        res.status(500).send('Internal Server Error');
+        res.status(500).json({ message: 'Internal server error' });
+
     }
   });
 
