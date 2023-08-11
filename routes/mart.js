@@ -64,12 +64,13 @@ router.get('/', async (req, res) => {
         "item": {
           "id": 1
         },
-        "title": "Galeria",
+        "title": "Banners",
         "columnsResum": [
           "url",
           "title",
           "owner",
           "modified",
+          "status",
           "menu"
         ],
         "type": [
@@ -77,6 +78,7 @@ router.get('/', async (req, res) => {
           "string",
           "string",
           "date",
+          "boolean",
           "menu"
         ],
         "typeResum": [
@@ -84,6 +86,7 @@ router.get('/', async (req, res) => {
           "string",
           "string",
           "date",
+          "boolean",
           "menu"
         ],
         "menu": [
