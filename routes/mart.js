@@ -90,7 +90,7 @@ router.get('/', async (req, res) => {
           "Editar/edit",
           "Preview/preview"
         ],
-        "rows": result, // Use the database query result here
+        "rows": result.rows, // Use the database query result here
       };
 
       res.status(200).json(response);
