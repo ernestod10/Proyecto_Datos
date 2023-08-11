@@ -7,6 +7,7 @@ router.use(express.json());
 
 //Este mock lo que hace es q devuelve el body enviado y tambien lo pone en la consola
 module.exports = (pool) => {
+  
   router.delete('/:id', async (req, res) => {
     const id = req.params.id;
     const query = 'DELETE FROM "apitest" WHERE id = $1';
@@ -177,6 +178,7 @@ router.get('/', async (req, res) => {
     
     console.log('img url sent');
   });
+
 
   return router;
 };
