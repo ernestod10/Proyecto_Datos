@@ -57,7 +57,43 @@ router.get('/', async (req, res) => {
   try {
       const query = 'SELECT * FROM "apitest"';
       const result = await pool.query(query);
-      res.status(200).json(result.rows);
+
+      const response = {
+        "id": "1",
+        "item": {
+          "id": 1
+        },
+        "title": "Galeria",
+        "columnsResum": [
+          "url",
+          "title",
+          "owner",
+          "modified",
+          "menu"
+        ],
+        "type": [
+          "img",
+          "string",
+          "string",
+          "date",
+          "menu"
+        ],
+        "typeResum": [
+          "img",
+          "string",
+          "string",
+          "date",
+          "menu"
+        ],
+        "menu": [
+          "Eliminar/delete",
+          "Editar/edit",
+          "Preview/preview"
+        ],
+        "rows": result.rows, // Use the database query result here
+      };
+
+      res.status(200).json(response);
   } catch (error) {
       console.error(error);
       res.status(500).send('Internal Server Error');
