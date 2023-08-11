@@ -57,7 +57,7 @@ router.get('/', async (req, res) => {
   try {
       const query = 'SELECT * FROM "apitest"';
       const result = await pool.query(query);
-
+      console.log(result.rows);
       const response = {
         "id": "1",
         "item": {
