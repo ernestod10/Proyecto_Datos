@@ -27,8 +27,7 @@ module.exports = (pool) => {
     }
   });
   router.post('/', async (req, res) => {
-    const imageData = req.body;
-
+    const imageData = req.body; 
     const {
         id,
         idEmpresa,
