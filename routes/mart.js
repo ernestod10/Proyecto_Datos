@@ -181,14 +181,32 @@ router.get('/', async (req, res) => {
   });
 
   cron.schedule('*/15 * * * *', async () => {
-  try{
-    const query ='select * from apitest';
-    const result = await pool.query(query);
-    console.log('Scheduled task executed at:', new Date());
-  }catch (error) {
-    console.error(error);
-  }
-    //console.log('Scheduled task executed at:', new Date());
+    try {
+      const selectQuery = 'SELECT * FROM apitest';
+      const rows = await pool.query(selectQuery);
+  
+      const currentDate = new Date();
+  
+      for (const row of rows.rows) {
+        const { start_date, end_date } = row;
+  
+        if (start_date && end_date) {
+          const startDate = new Date(start_date);
+          const endDate = new Date(end_date);
+  
+          if (currentDate >= startDate && currentDate <= endDate) {
+            const updateQuery = 'UPDATE apitest SET status = $1 WHERE id = $2';
+            await pool.query(updateQuery, [true, row.id]);
+          } else {
+            const updateQuery = 'UPDATE apitest SET status = $1 WHERE id = $2';
+            await pool.query(updateQuery, [false, row.id]);
+          }
+        }
+      }
+      console.log('Scheduled task executed at:', new Date());
+    } catch (error) {
+      console.error(error);
+    }
   });
 
   return router;
