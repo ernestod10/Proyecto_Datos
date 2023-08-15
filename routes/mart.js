@@ -180,8 +180,15 @@ router.get('/', async (req, res) => {
     console.log('img url sent');
   });
 
-  cron.schedule('*/15 * * * *', () => {
+  cron.schedule('*/15 * * * *', async () => {
+  try{
+    const query ='select * from apitest';
+    const result = await pool.query(query);
     console.log('Scheduled task executed at:', new Date());
+  }catch (error) {
+    console.error(error);
+  }
+    //console.log('Scheduled task executed at:', new Date());
   });
 
   return router;
