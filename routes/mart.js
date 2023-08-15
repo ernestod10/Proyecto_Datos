@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const cron = require('node-cron');
 
 
 router.use(express.json());
@@ -179,6 +180,9 @@ router.get('/', async (req, res) => {
     console.log('img url sent');
   });
 
+  cron.schedule('*/15 * * * *', () => {
+    console.log('Scheduled task executed at:', new Date());
+  });
 
   return router;
 };
