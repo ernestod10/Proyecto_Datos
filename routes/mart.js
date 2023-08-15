@@ -182,7 +182,7 @@ router.get('/', async (req, res) => {
   router.post('/img/', async (req, res) => {
     //await pool.query(query, values);
     contador++;
-    res.status(200).json({ url: 'https://dummyimage.com/600x400/000/fff.jpg&text=test'+'$contador' });
+    res.status(200).json({ url: 'https://dummyimage.com/600x400/000/fff.jpg&text=test'+contador });
     
     console.log('img url sent');
   });
