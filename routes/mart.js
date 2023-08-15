@@ -95,7 +95,7 @@ router.get('/', async (req, res) => {
           "string",
           "string",
           "date",
-          "boolean",
+          "string",
           "menu"
         ],
         "typeResum": [
@@ -103,7 +103,7 @@ router.get('/', async (req, res) => {
           "string",
           "string",
           "date",
-          "boolean",
+          "string",
           "menu"
         ],
         "menu": [
@@ -180,7 +180,7 @@ router.get('/', async (req, res) => {
     console.log('img url sent');
   });
 
-  cron.schedule('*/15 * * * *', async () => {
+  cron.schedule('*/1 * * * *', async () => {
     try {
       const selectQuery = 'SELECT * FROM apitest';
       const rows = await pool.query(selectQuery);
@@ -195,10 +195,10 @@ router.get('/', async (req, res) => {
           const endDate = new Date(end_date);
   
           if (currentDate >= startDate && currentDate <= endDate) {
-            const updateQuery = 'UPDATE apitest SET status = $1 WHERE id = $2';
+            const updateQuery = 'UPDATE apitest SET available = $1 WHERE id = $2';
             await pool.query(updateQuery, [true, row.id]);
           } else {
-            const updateQuery = 'UPDATE apitest SET status = $1 WHERE id = $2';
+            const updateQuery = 'UPDATE apitest SET available = $1 WHERE id = $2';
             await pool.query(updateQuery, [false, row.id]);
           }
         }
