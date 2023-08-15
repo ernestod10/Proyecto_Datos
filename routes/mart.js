@@ -180,24 +180,30 @@ router.get('/', async (req, res) => {
     console.log('img url sent');
   });
 
-  cron.schedule('*/1 * * * *', async () => {
+  
+  /*
+  * CRON JOB PARA ACTUALIZAR EL CAMPO AVAILABLE DE LA TABLA SE EJECTUA CADA 2 HORAS
+  */
+  cron.schedule('* */2 * * *', async () => {
     try {
       const selectQuery = 'SELECT * FROM apitest';
       const rows = await pool.query(selectQuery);
   
       const currentDate = new Date();
-  
+      //Recorre cada fila de la tabla
       for (const row of rows.rows) {
         const { start_date, end_date } = row;
-  
+        //VERIFICA QUE NO SEAN NULL
         if (start_date && end_date) {
           const startDate = new Date(start_date);
           const endDate = new Date(end_date);
-  
+          //Hace la comparacion de fechas con la fecha actual
           if (currentDate >= startDate && currentDate <= endDate) {
+            //Si la fecha actual esta entre las fechas de inicio y fin, actualiza el campo available a true
             const updateQuery = 'UPDATE apitest SET available = $1 WHERE id = $2';
             await pool.query(updateQuery, [true, row.id]);
           } else {
+            //Si la fecha actual no esta entre las fechas de inicio y fin, actualiza el campo available a false
             const updateQuery = 'UPDATE apitest SET available = $1 WHERE id = $2';
             await pool.query(updateQuery, [false, row.id]);
           }
