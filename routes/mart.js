@@ -140,12 +140,14 @@ router.get('/', async (req, res) => {
         created,
         modified,
         available,
+        start_date,
+        end_date,
         error,
         __typename,
         menu
     } = updatedData;
 
-    const query = 'UPDATE "apitest" SET "idEmpresa" = $1,title = $2,"type" = $3,  url = $4, "message" = $5, "owner" = $6,   size = $7, created = $8, modified = $9,  available = $10,  "error" = $11,   __typename = $12,   menu = $13 WHERE id = $14;'
+    const query = 'UPDATE "apitest" SET "idEmpresa" = $1,title = $2,"type" = $3,  url = $4, "message" = $5, "owner" = $6,   size = $7, created = $8, modified = $9,  available = $10, start_date = $11, end_date = $12,  "error" = $13,   __typename = $14,  menu = $15 WHERE id = $16;'
     const values = [
         idEmpresa,
         title,
@@ -157,6 +159,8 @@ router.get('/', async (req, res) => {
         created,
         modified,
         available,
+        start_date,
+        end_date,
         error,
         __typename,
         JSON.stringify(menu),
