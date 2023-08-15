@@ -10,7 +10,7 @@ router.use(express.json());
 *prototipo de api que se conecta a una base de datos mock de prueba en postgresql
 */
 module.exports = (pool) => {
-  
+  var contador = 0;
   router.delete('/:id', async (req, res) => {
     const id = req.params.id;
     const query = 'DELETE FROM "apitest" WHERE id = $1';
@@ -181,7 +181,8 @@ router.get('/', async (req, res) => {
 
   router.post('/img/', async (req, res) => {
     //await pool.query(query, values);
-    res.status(200).json({ url: 'https://dummyimage.com/600x400/000/fff.jpg&text=test' });
+    contador++;
+    res.status(200).json({ url: 'https://dummyimage.com/600x400/000/fff.jpg&text=test$contador' });
     
     console.log('img url sent');
   });
