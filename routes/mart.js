@@ -6,7 +6,9 @@ const cron = require('node-cron');
 router.use(express.json());
 
 
-//Este mock lo que hace es q devuelve el body enviado y tambien lo pone en la consola
+/*
+*prototipo de api que se conecta a una base de datos mock de prueba en postgresql
+*/
 module.exports = (pool) => {
   
   router.delete('/:id', async (req, res) => {
@@ -109,7 +111,8 @@ router.get('/', async (req, res) => {
         "menu": [
           "Eliminar/delete",
           "Editar/edit",
-          "Preview/preview"
+          "Preview/preview",
+          "Fechas/dates",
         ],
         "rows": result.rows, // Use the database query result here
       };
@@ -180,7 +183,7 @@ router.get('/', async (req, res) => {
     console.log('img url sent');
   });
 
-  
+
   /*
   * CRON JOB PARA ACTUALIZAR EL CAMPO AVAILABLE DE LA TABLA SE EJECTUA CADA 2 HORAS
   */
