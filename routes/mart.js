@@ -191,7 +191,7 @@ router.get('/', async (req, res) => {
   /*
   * CRON JOB PARA ACTUALIZAR EL CAMPO AVAILABLE DE LA TABLA SE EJECTUA CADA 2 HORAS
   */
-  cron.schedule('*/15 */2 * * *', async () => {
+  cron.schedule('* */6 * * *', async () => {
     try {
       const selectQuery = 'SELECT * FROM apitest';
       const rows = await pool.query(selectQuery);
